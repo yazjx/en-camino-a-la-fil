@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En Camino a la FIL Guadalajara 2026</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Pacifico/Caveat (Cursiva), Comic Neue (Cuerpo) y Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Comic+Neue:ital,wght@0,400;0,700;1,400&family=Pacifico&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastel: {
+                            lila: '#D8B4F8',
+                            lilaDark: '#B388EB',
+                            rosa: '#FFCACC',
+                            rosaLight: '#FFE5E8',
+                            menta: '#BFF6F0',
+                            mentaDark: '#85E3D9',
+                            crema: '#FAF8F5',
+                            cardBg: '#FFFFFF',
+                            texto: '#4A4259',
+                            textoSuave: '#6E657F'
+                        }
+                    },
+                    fontFamily: {
+                        cursive: ['Caveat', 'Pacifico', 'cursive'],
+                        body: ['"Comic Neue"', 'Quicksand', 'sans-serif'],
+                        heading: ['Quicksand', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'pastel': '0 10px 25px -5px rgba(216, 180, 248, 0.3), 0 8px 10px -6px rgba(255, 202, 204, 0.2)',
+                        'pastel-lg': '0 20px 35px -10px rgba(179, 136, 235, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Comic Neue', 'Quicksand', sans-serif;
+            background-color: #FAF8F5;
+            color: #4A4259;
+        }
+
+        .font-header-cursive {
+            font-family: 'Caveat', cursive;
+        }
+
+        /* Glassmorphism y sombras suaves pastel */
+        .glass-pastel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(216, 180, 248, 0.3);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #FFE5E8 0%, #D8B4F8 50%, #BFF6F0 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #9C6ADE 0%, #E66B8B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D8B4F8;
+            border-radius: 20px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B388EB;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-pastel-lila selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 w-full glass-pastel transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand / Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pastel-lila to-pastel-rosa flex items-center justify-center text-white text-2xl shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+                <div>
+                    <h1 class="font-header-cursive text-3xl sm:text-4xl font-bold tracking-wide text-gray-800 group-hover:text-pastel-lilaDark transition-colors">
+                        EN CAMINO A LA FIL
+                    </h1>
+                    <span class="text-xs uppercase tracking-widest text-pastel-textoSuave font-bold block -mt-1">Guadalajara 2026</span>
+                </div>
+            </a>
+
+            <!-- Nav Links Desktop -->
+            <nav class="hidden md:flex items-center space-x-6 text-lg font-bold">
+                <a href="#inicio" class="hover:text-pastel-lilaDark transition-colors">Inicio</a>
+                <a href="#como-funciona" class="hover:text-pastel-lilaDark transition-colors">¿Cómo funciona?</a>
+                <a href="#faq" class="hover:text-pastel-lilaDark transition-colors">Preguntas</a>
+            </nav>
+
+            <!-- CTA Header Button -->
+            <div class="flex items-center space-x-3">
+                <button onclick="openModal()" class="bg-gradient-to-r from-pastel-lila to-pastel-rosa hover:from-pastel-lilaDark hover:to-pastel-rosa font-bold text-gray-800 hover:text-white px-5 py-2.5 rounded-full shadow-md hover:shadow-pastel transition-all transform hover:-translate-y-0.5 text-base sm:text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-car-side"></i>
+                    <span>Unirme Ahora</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="inicio" class="relative overflow-hidden py-12 lg:py-20 gradient-bg">
+            <!-- Decorative SVG Circles -->
+            <div class="absolute -top-10 -left-10 w-72 h-72 bg-white opacity-30 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-pastel-menta opacity-40 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-pastel-lila text-xs sm:text-sm font-bold text-pastel-texto shadow-sm">
+                            <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+                            ¡Convocatoria Abierta para Viajeros FIL 2026! 📚🚘
+                        </div>
+
+                        <h1 class="text-4xl sm:text-6xl lg:text-6xl font-extrabold text-gray-800 leading-tight">
+                            No viajes solo a la <span class="gradient-text font-header-cursive text-5xl sm:text-7xl lg:text-8xl block my-1">FIL Guadalajara</span>
+                        </h1>
+
+                        <p class="text-lg sm:text-xl text-pastel-texto font-medium max-w-2xl mx-auto lg:mx-0">
+                            Encuentra compañer@s de viaje desde tu misma alcaldía, municipio o estado. Pónganse de acuerdo para <strong>compartir auto, rentar transporte juntos, encontrarse en la terminal</strong> o dividir hospedaje en Guadalajara.
+                        </p>
+
+                        <!-- CTA Group -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                            <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 bg-gray-800 hover:bg-pastel-lilaDark text-white text-xl font-bold rounded-2xl shadow-pastel-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                                <i class="fa-solid fa-paper-plane text-pastel-menta"></i>
+                                Buscar mi Grupo de Viaje
+                            </button>
+                            
+                            <a href="#como-funciona" class="w-full sm:w-auto px-6 py-4 bg-white/90 hover:bg-white text-pastel-texto text-lg font-bold rounded-2xl border border-purple-200 shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-circle-info text-pastel-lilaDark"></i>
+                                Saber más
+                            </a>
+                        </div>
+
+                        <!-- Highlights / Badges -->
+                        <div class="pt-6 grid grid-cols-3 gap-2 text-center sm:text-left border-t border-purple-200/60 max-w-lg mx-auto lg:mx-0">
+                            <div>
+                                <span class="block text-2xl font-bold text-gray-800">100%</span>
+                                <span class="text-xs sm:text-sm text-pastel-textoSuave font-semibold">Comunitario</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl font-bold text-gray-800">+32</span>
+                                <span class="text-xs sm:text-sm text-pastel-textoSuave font-semibold">Estados integrados</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl font-bold text-gray-800">Ahorra</span>
+                                <span class="text-xs sm:text-sm text-pastel-textoSuave font-semibold">En transporte y hotel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Image Showcase -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none space-y-4">
+                            <!-- Main Polaroid Card -->
+                            <div class="rounded-3xl overflow-hidden shadow-2xl bg-white p-4 border-4 border-white transform rotate-1 hover:rotate-0 transition-transform duration-500">
+                                <div class="overflow-hidden rounded-2xl relative">
+                                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=800&auto=format&fit=crop" 
+                                         alt="Feria del Libro y lectores apasionados" 
+                                         class="w-full h-72 sm:h-80 object-cover"
+                                         onerror="this.src='https://placehold.co/800x600/D8B4F8/FFFFFF?text=FIL+Guadalajara+2026'">
+                                    
+                                    <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full text-xs font-bold text-gray-800 shadow-sm flex items-center gap-1.5">
+                                        <span class="text-base">📚</span>
+                                        <span>¡Comunidad Lectora!</span>
+                                    </div>
+                                </div>
+
+                                <div class="p-4 bg-pastel-crema rounded-2xl mt-3 flex items-center gap-4 border border-purple-100">
+                                    <div class="w-12 h-12 rounded-2xl bg-pastel-menta flex-shrink-0 flex items-center justify-center text-gray-800 text-xl font-bold shadow-sm">
+                                        <i class="fa-solid fa-route"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 text-base">Ruta CDMX / EdoMex ➔ Guadalajara</h4>
+                                        <p class="text-xs text-pastel-textoSuave font-semibold">Grupos coordinando transporte compartido esta semana.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tarjeta Informativa Fija al costado/abajo (sin tapar la Polaroid) -->
+                            <div class="bg-white p-4 rounded-2xl shadow-lg border-2 border-pastel-rosa flex items-center space-x-4 transition-all hover:shadow-pastel">
+                                <div class="w-12 h-12 rounded-2xl bg-pastel-rosa flex-shrink-0 flex items-center justify-center text-white text-xl shadow-sm">
+                                    <i class="fa-solid fa-hotel"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-gray-800">Compartir Airbnb / Hotel</p>
+                                    <p class="text-xs text-pastel-lilaDark font-bold">Coordina y divide gastos de hospedaje en Guadalajara</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE BENEFICIOS / ¿CÓMO FUNCIONA? -->
+        <section id="como-funciona" class="py-16 sm:py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <h2 class="text-xs sm:text-sm uppercase tracking-widest font-extrabold text-pastel-lilaDark">Coordinación Sencilla y Segura</h2>
+                    <p class="text-3xl sm:text-5xl font-extrabold text-gray-800">
+                        ¿Cómo nos organizamos para ir a la <span class="font-header-cursive text-4xl sm:text-6xl text-pastel-lilaDark">FIL</span>?
+                    </p>
+                    <p class="text-lg text-pastel-texto font-medium">
+                        Viajar a Expo Guadalajara en grupo no solo es más económico, sino mucho más divertido. Elige la modalidad que mejor se adapte a tu plan.
+                    </p>
+                </div>
+
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Card 1: Carpooling -->
+                    <div class="bg-pastel-crema rounded-3xl p-8 border border-pastel-lila/30 shadow-sm hover:shadow-pastel transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-pastel-lila/40 flex items-center justify-center text-pastel-texto text-2xl font-bold mb-6">
+                                <i class="fa-solid fa-car"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Compartir Coche</h3>
+                            <p class="text-pastel-texto font-medium text-base leading-relaxed">
+                                Si llevas auto y te quedan asientos libres, o si buscas un aventón para dividir la gasolina y casetas de forma equitativa.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-purple-100 flex items-center text-xs font-bold text-pastel-lilaDark">
+                            <span>Carpooling Literario</span>
+                            <i class="fa-solid fa-arrow-right ml-auto"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Autobús / Transporte Renta -->
+                    <div class="bg-pastel-crema rounded-3xl p-8 border border-pastel-rosa/40 shadow-sm hover:shadow-pastel transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-pastel-rosa/40 flex items-center justify-center text-pastel-texto text-2xl font-bold mb-6">
+                                <i class="fa-solid fa-bus"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Rentar Camión o Van</h3>
+                            <p class="text-pastel-texto font-medium text-base leading-relaxed">
+                                Si somos un grupo amplio de la misma zona o alcaldía, cotizamos la renta de una Sprinter o camión con operador privado.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-pink-100 flex items-center text-xs font-bold text-pink-500">
+                            <span>Viajes Grupales</span>
+                            <i class="fa-solid fa-arrow-right ml-auto"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Punto de Encuentro Terminal -->
+                    <div class="bg-pastel-crema rounded-3xl p-8 border border-pastel-menta/50 shadow-sm hover:shadow-pastel transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-pastel-menta/50 flex items-center justify-center text-pastel-texto text-2xl font-bold mb-6">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Encuentro en Terminal</h3>
+                            <p class="text-pastel-texto font-medium text-base leading-relaxed">
+                                Compra tu boleto de autobús por tu cuenta y coincide en el mismo horario/terminal con otros asistentes para ir juntos desde la central.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-teal-100 flex items-center text-xs font-bold text-teal-600">
+                            <span>Central de Autobuses</span>
+                            <i class="fa-solid fa-arrow-right ml-auto"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Hospedaje -->
+                    <div class="bg-pastel-crema rounded-3xl p-8 border border-pastel-lila/30 shadow-sm hover:shadow-pastel transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                        <div>
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-pastel-lila to-pastel-menta flex items-center justify-center text-gray-800 text-2xl font-bold mb-6">
+                                <i class="fa-solid fa-house-user"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3">Compartir Hotel / Casa</h3>
+                            <p class="text-pastel-texto font-medium text-base leading-relaxed">
+                                Dividan el costo de una casa en Airbnb o habitaciones dobles en hoteles cercanos a Expo Guadalajara.
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-purple-100 flex items-center text-xs font-bold text-pastel-lilaDark">
+                            <span>Alojamiento Compartido</span>
+                            <i class="fa-solid fa-arrow-right ml-auto"></i>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE GALERÍA / AMBIENTE FIL -->
+        <section class="py-16 gradient-bg relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <div class="lg:col-span-5 space-y-6 text-center lg:text-left">
+                        <span class="inline-block px-3 py-1 bg-white/80 rounded-full text-xs font-extrabold text-pastel-texto">
+                            ✨ La experiencia literaria del año
+                        </span>
+                        <h2 class="text-3xl sm:text-5xl font-extrabold text-gray-800">
+                            La travesía comienza desde <span class="font-header-cursive text-4xl sm:text-6xl text-purple-700">el camino</span>
+                        </h2>
+                        <p class="text-lg text-pastel-texto font-medium">
+                            Ir a la Feria Internacional del Libro de Guadalajara es más que comprar libros; es compartir recomendaciones, debates sobre autores en el camino, risas y recomendaciones gastronómicas en tierras tapatías.
+                        </p>
+                        <div class="pt-2">
+                            <button onclick="openModal()" class="px-8 py-3.5 bg-gray-800 hover:bg-pastel-lilaDark text-white font-bold text-lg rounded-2xl shadow-lg transition-all transform hover:-translate-y-1">
+                                Registrar mi zona de salida
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <div class="rounded-3xl overflow-hidden shadow-md border-4 border-white hover:scale-105 transition-transform duration-300">
+                                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=600&auto=format&fit=crop" 
+                                     alt="Libros y lectura" 
+                                     class="w-full h-48 sm:h-64 object-cover"
+                                     onerror="this.src='https://placehold.co/600x400/FFCACC/FFFFFF?text=Libros'">
+                            </div>
+                            <div class="rounded-3xl overflow-hidden shadow-md border-4 border-white hover:scale-105 transition-transform duration-300">
+                                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=600&auto=format&fit=crop" 
+                                     alt="Viaje en carretera" 
+                                     class="w-full h-36 sm:h-44 object-cover"
+                                     onerror="this.src='https://placehold.co/600x400/BFF6F0/FFFFFF?text=Roadtrip'">
+                            </div>
+                        </div>
+                        <div class="space-y-4 pt-8">
+                            <div class="rounded-3xl overflow-hidden shadow-md border-4 border-white hover:scale-105 transition-transform duration-300">
+                                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop" 
+                                     alt="Feria de libros" 
+                                     class="w-full h-36 sm:h-44 object-cover"
+                                     onerror="this.src='https://placehold.co/600x400/D8B4F8/FFFFFF?text=Libreria'">
+                            </div>
+                            <div class="rounded-3xl overflow-hidden shadow-md border-4 border-white hover:scale-105 transition-transform duration-300">
+                                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&auto=format&fit=crop" 
+                                     alt="Amigos de viaje" 
+                                     class="w-full h-48 sm:h-64 object-cover"
+                                     onerror="this.src='https://placehold.co/600x400/FFE5E8/FFFFFF?text=Compa%C3%B1eros'">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE FORMULARIO DE REGISTRO DIRECTO -->
+        <section id="registro" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-pastel-crema rounded-3xl p-6 sm:p-10 border-2 border-pastel-lila/40 shadow-pastel-lg relative">
+                    
+                    <div class="text-center space-y-3 mb-8">
+                        <span class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pastel-lila to-pastel-rosa text-white font-bold text-2xl inline-flex items-center justify-center shadow-md">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800">
+                            Encuentra a tu grupo de viaje
+                        </h2>
+                        <p class="text-pastel-texto font-medium text-base sm:text-lg max-w-xl mx-auto">
+                            Ingresa tus datos para conectarte con lectores de tu misma alcaldía o municipio que viajarán en tus mismas fechas a la FIL 2026.
+                        </p>
+                    </div>
+
+                    <!-- FORMULARIO MAIN -->
+                    <form id="mainForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            
+                            <!-- Nombre completo -->
+                            <div>
+                                <label for="nombre" class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fa-solid fa-user text-pastel-lilaDark mr-1"></i> Nombre Completo *
+                                </label>
+                                <input type="text" id="nombre" required placeholder="Ej. Mariana López" 
+                                    class="w-full px-4 py-3 rounded-2xl border-2 border-purple-100 focus:border-pastel-lilaDark focus:outline-none transition-all font-medium bg-white">
+                            </div>
+
+                            <!-- Teléfono / WhatsApp -->
+                            <div>
+                                <label for="telefono" class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fa-brands fa-whatsapp text-emerald-500 mr-1"></i> Teléfono / WhatsApp *
+                                </label>
+                                <input type="tel" id="telefono" required placeholder="10 dígitos (Ej. 5512345678)" 
+                                    class="w-full px-4 py-3 rounded-2xl border-2 border-purple-100 focus:border-pastel-lilaDark focus:outline-none transition-all font-medium bg-white">
+                            </div>
+
+                            <!-- Correo electrónico -->
+                            <div>
+                                <label for="email" class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fa-solid fa-envelope text-pastel-lilaDark mr-1"></i> Correo Electrónico *
+                                </label>
+                                <input type="email" id="email" required placeholder="ejemplo@correo.com" 
+                                    class="w-full px-4 py-3 rounded-2xl border-2 border-purple-100 focus:border-pastel-lilaDark focus:outline-none transition-all font-medium bg-white">
+                            </div>
+
+                            <!-- Día de Partida -->
+                            <div>
+                                <label for="diaPartida" class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fa-solid fa-calendar-day text-pastel-rosa mr-1"></i> Día propuesto de partida *
+                                </label>
+                                <select id="diaPartida" required class="w-full px-4 py-3 rounded-2xl border-2 border-purple-100 focus:border-pastel-lilaDark focus:outline-none transition-all font-medium bg-white">
+                                    <option value="">Selecciona una fecha aproximada</option>
+                                    <option value="Viernes previo (Inauguración)">Viernes previo a la FIL</option>
+                                    <option value="Sábado 1er Fin de semana">Primer Sábado de FIL</option>
+                                    <option value="Domingo 1er Fin de semana">Primer Domingo de FIL</option>
+                                    <option value="Entre semana (Lunes-Jueves)">Entre semana</option>
+                                    <option value="Segundo Fin de Semana">Segundo Fin de Semana</option>
+                                    <option value="Flexible / Por acordar">Flexible / Aún por definir</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <!-- Estado y Municipio / Alcaldía -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            <div>
+                                <label for="estado" class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fa-solid fa-location-dot text-pastel-mentaDark mr-1"></i> Estado de Origen *
+                                </label>
+                                <select id="estado" required onchange="updateMunicipios()" class="w-full px-4 py-3 rounded-2xl border-2 border-purple-100 focus:border-pastel-lilaDark focus:outline-none transition-all font-medium bg-white">
+                                    <option value="">Selecciona tu Estado</option>
+                                    <option value="CDMX">Ciudad de México (CDMX)</option>
+                                    <option value="EdoMex">Estado de México</option>
+                                    <option value="Jalisco">Jalisco (Fuera de ZMG)</option>
+                                    <option value="Guanajuato">Guanajuato</option>
+                                    <option value="Michoacan">Michoacán</option>
+                                    <option value="Querétaro">Querétaro</option>
+                                    <option value="Puebla">Puebla</option>
+                                    <option value="Nuevo Leon">Nuevo León</option>
+                                    <option value="Veracruz">Veracruz</option>
+                                    <option value="Otro">Otro Estado de la República</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="alcaldia" class="block text-sm font-bold text-gray-700 mb-2">
+                                    <i class="fa-solid fa-city text-pastel-mentaDark mr-1"></i> Alcaldía / Municipio / Zona *
+                                </label>
+                                <input type="text" id="alcaldia" required placeholder="Ej. Coyoacán, Naucalpan, León..." 
+                                    class="w-full px-4 py-3 rounded-2xl border-2 border-purple-100 focus:border-pastel-lilaDark focus:outline-none transition-all font-medium bg-white">
+                            </div>
+                        </div>
+
+                        <!-- Interés Principal -->
+                        <div class="pt-2">
+                            <label class="block text-sm font-bold text-gray-700 mb-2">
+                                <i class="fa-solid fa-handshake-angle text-pastel-lilaDark mr-1"></i> ¿Cuál es tu interés principal? *
+                            </label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-3 p-3 rounded-2xl border-2 border-purple-100 bg-white hover:bg-purple-50/50 cursor-pointer transition-all">
+                                    <input type="radio" name="interes" value="Tengo coche y busco pasajeros" required class="text-pastel-lilaDark focus:ring-pastel-lila">
+                                    <span class="text-sm font-bold text-gray-700"><i class="fa-solid fa-car-side text-pastel-lilaDark mr-1"></i> Tengo auto y ofrezco lugares</span>
+                                </label>
+
+                                <label class="flex items-center space-x-3 p-3 rounded-2xl border-2 border-purple-100 bg-white hover:bg-purple-50/50 cursor-pointer transition-all">
+                                    <input type="radio" name="interes" value="Busco coche compartido (Aventón)" class="text-pastel-lilaDark focus:ring-pastel-lila">
+                                    <span class="text-sm font-bold text-gray-700"><i class="fa-solid fa-person-walking-luggage text-pastel-rosa mr-1"></i> Busco aventón en auto</span>
+                                </label>
+
+                                <label class="flex items-center space-x-3 p-3 rounded-2xl border-2 border-purple-100 bg-white hover:bg-purple-50/50 cursor-pointer transition-all">
+                                    <input type="radio" name="interes" value="Rentar Sprinter / Camión colectivo" class="text-pastel-lilaDark focus:ring-pastel-lila">
+                                    <span class="text-sm font-bold text-gray-700"><i class="fa-solid fa-bus text-teal-500 mr-1"></i> Rentar transporte colectivo</span>
+                                </label>
+
+                                <label class="flex items-center space-x-3 p-3 rounded-2xl border-2 border-purple-100 bg-white hover:bg-purple-50/50 cursor-pointer transition-all">
+                                    <input type="radio" name="interes" value="Encontrarse en Central y compartir Hotel/Airbnb" class="text-pastel-lilaDark focus:ring-pastel-lila">
+                                    <span class="text-sm font-bold text-gray-700"><i class="fa-solid fa-bed text-purple-500 mr-1"></i> Terminal + Compartir Hospedaje</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Comentarios Adicionales -->
+                        <div>
+                            <label for="comentarios" class="block text-sm font-bold text-gray-700 mb-2">
+                                Comentarios / Detalles opcionales
+                            </label>
+                            <textarea id="comentarios" rows="2" placeholder="Ej. Llevo 1 maleta mediana, puedo salir a las 6:00 AM, busco habitación compartida solo chicas..." 
+                                class="w-full px-4 py-3 rounded-2xl border-2 border-purple-100 focus:border-pastel-lilaDark focus:outline-none transition-all font-medium bg-white"></textarea>
+                        </div>
+
+                        <!-- Botón Enviar -->
+                        <div class="pt-4 text-center">
+                            <button type="submit" class="w-full sm:w-auto px-12 py-4 bg-gradient-to-r from-pastel-lilaDark to-pastel-rosa hover:from-purple-600 hover:to-pink-400 text-white font-extrabold text-xl rounded-2xl shadow-pastel-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                                <i class="fa-solid fa-paper-plane mr-2"></i> Registrarme y Conectar
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) -->
+        <section id="faq" class="py-16 gradient-bg">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-3 mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-800">
+                        Preguntas Frecuentes
+                    </h2>
+                    <p class="text-pastel-texto font-medium text-base">Resolvemos tus dudas sobre cómo organizamos los grupos.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white/90 rounded-2xl p-6 border border-purple-100 shadow-sm">
+                        <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-question text-pastel-lilaDark"></i>
+                            ¿Esta página cobra alguna comisión?
+                        </h3>
+                        <p class="text-pastel-texto font-medium mt-2 text-sm sm:text-base">
+                            No. "En Camino a la FIL" es una plataforma comunitaria y totalmente gratuita creada por y para entusiastas de la lectura. Los arreglos económicos (gasolina, casetas, hospedaje) se coordinan directamente entre los viajeros de forma justa.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/90 rounded-2xl p-6 border border-purple-100 shadow-sm">
+                        <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-emerald-500"></i>
+                            ¿Cómo garantizan la seguridad entre coordinadores?
+                        </h3>
+                        <p class="text-pastel-texto font-medium mt-2 text-sm sm:text-base">
+                            Verificamos los perfiles mediante redes sociales y número telefónico previo a agregarlos a los grupos cerrados de WhatsApp por zona. Recomendamos siempre realizar videollamadas previas entre los integrantes del grupo de viaje.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/90 rounded-2xl p-6 border border-purple-100 shadow-sm">
+                        <h3 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+                            <i class="fa-solid fa-bus text-pastel-rosa font-bold"></i>
+                            ¿Qué pasa si somos muchos de la misma alcaldía o municipio?
+                        </h3>
+                        <p class="text-pastel-texto font-medium mt-2 text-sm sm:text-base">
+                            Si se reúnen más de 12 a 15 personas de una misma zona (por ejemplo, Cuauhtémoc, Coyoacán o Querétaro), un coordinador voluntario apoya cotizando un transporte privado (Sprinter o autobús exclusivo).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER / PIE DE PÁGINA -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8 border-t-4 border-pastel-lila">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-gray-800">
+                
+                <!-- Columna 1: Info Marca -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-pastel-lila flex items-center justify-center text-gray-900 text-xl font-bold">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <span class="font-header-cursive text-3xl font-bold text-pastel-lila">
+                            En Camino a la FIL
+                        </span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+                        Comunidad independiente de lectores viajeros en México. Conectando personas desde su origen hacia las principales ferias del libro del país.
+                    </p>
+                    <div class="p-4 rounded-2xl bg-gray-800/80 border border-gray-700 text-xs text-pastel-menta">
+                        <i class="fa-solid fa-bell mr-1"></i> <strong>Siguiente Convocatoria:</strong> ¿Te perdiste la FIL? Quédate atento en nuestras redes para la Feria del Libro de Minería (FILPM), FENAL León y FIL Monterrey.
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces Rápidos -->
+                <div class="md:col-span-3 space-y-3">
+                    <h4 class="text-lg font-bold text-pastel-rosa">Navegación</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#inicio" class="hover:text-pastel-lila transition-colors">Inicio</a></li>
+                        <li><a href="#como-funciona" class="hover:text-pastel-lila transition-colors">¿Cómo funciona?</a></li>
+                        <li><a href="#registro" class="hover:text-pastel-lila transition-colors">Formulario de registro</a></li>
+                        <li><a href="#faq" class="hover:text-pastel-lila transition-colors">Preguntas frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Redes Sociales Solicitadas -->
+                <div class="md:col-span-4 space-y-4">
+                    <h4 class="text-lg font-bold text-pastel-menta">Sigue nuestras redes oficiales</h4>
+                    <p class="text-xs text-gray-400">
+                        Búscanos como <strong>"En Camino a la FIL"</strong> en todas las plataformas para mantenerte informado de convocatorias masivas en la República Mexicana.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 flex items-center justify-center text-lg transition-all" title="Instagram: En Camino a la FIL">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-blue-600 flex items-center justify-center text-lg transition-all" title="Facebook: En Camino a la FIL">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://x.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-gray-700 flex items-center justify-center text-lg transition-all" title="X (Twitter): En Camino a la FIL">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-pink-600 flex items-center justify-center text-lg transition-all" title="TikTok: En Camino a la FIL">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://whatsapp.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-gray-800 hover:bg-emerald-500 flex items-center justify-center text-lg transition-all" title="WhatsApp: En Camino a la FIL">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="pt-8 text-center text-xs text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 En Camino a la FIL. Iniciativa comunitaria sin fines de lucro.</p>
+                <p class="text-gray-400">Diseñado con ❤️ para la comunidad lectora de México</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL / POPUP DE REGISTRO RÁPIDO (Se activa con botones CTA) -->
+    <div id="modalRegistro" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity duration-300">
+        <div class="bg-pastel-crema rounded-3xl max-w-2xl w-full p-6 sm:p-8 border-4 border-pastel-lila shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white text-gray-600 hover:text-gray-900 flex items-center justify-center shadow-md font-bold text-xl">
+                ✕
+            </button>
+
+            <div class="text-center space-y-2 mb-6">
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-800">
+                    Únete a "En Camino a la FIL"
+                </h3>
+                <p class="text-sm text-pastel-texto font-semibold">
+                    Completa tus datos para asignarte a tu grupo regional.
+                </p>
+            </div>
+
+            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Nombre Completo *</label>
+                    <input type="text" required placeholder="Tu nombre completo" class="w-full px-4 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:border-pastel-lilaDark text-sm bg-white">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Teléfono WhatsApp *</label>
+                        <input type="tel" required placeholder="10 dígitos" class="w-full px-4 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:border-pastel-lilaDark text-sm bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Correo Electrónico *</label>
+                        <input type="email" required placeholder="tu@correo.com" class="w-full px-4 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:border-pastel-lilaDark text-sm bg-white">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Estado / Alcaldía *</label>
+                        <input type="text" required placeholder="Ej. CDMX / Coyoacán" class="w-full px-4 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:border-pastel-lilaDark text-sm bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Día de salida *</label>
+                        <select required class="w-full px-4 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:border-pastel-lilaDark text-sm bg-white">
+                            <option value="">Selecciona fecha</option>
+                            <option value="Primer Fin de Semana">Primer Fin de semana</option>
+                            <option value="Entre semana">Entre semana</option>
+                            <option value="Segundo Fin de semana">Segundo Fin de semana</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">¿Qué buscas compartir? *</label>
+                    <select required class="w-full px-4 py-2.5 rounded-xl border border-purple-200 focus:outline-none focus:border-pastel-lilaDark text-sm bg-white">
+                        <option value="Compartir auto">Compartir auto / Llevo coche</option>
+                        <option value="Buscar transporte colectivo">Rentar transporte / van en grupo</option>
+                        <option value="Encuentro en terminal">Encuentro en central de autobuses</option>
+                        <option value="Compartir hospedaje">Compartir hospedaje (Hotel/Airbnb)</option>
+                    </select>
+                </div>
+
+                <div class="pt-4 text-center">
+                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-pastel-lila to-pastel-rosa hover:from-pastel-lilaDark hover:to-pink-400 font-extrabold text-gray-800 hover:text-white rounded-xl shadow-md transition-all">
+                        Enviar Registro
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DE ÉXITO MANDATORIO SEAGÚN ESPECIFICACIÓN -->
+    <div id="modalExito" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-gray-900/70 backdrop-blur-md">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 border-4 border-pastel-lila shadow-2xl text-center space-y-6 transform scale-100 transition-all">
+            
+            <div class="w-20 h-20 bg-pastel-menta rounded-full flex items-center justify-center mx-auto text-emerald-600 text-4xl shadow-md animate-bounce">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div>
+                <!-- MENSAJE EXACTO SOLICITADO -->
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-gray-800 leading-snug">
+                    Su registro fue recibido de manera exitosa
+                </h3>
+                <p class="text-sm text-pastel-texto font-medium mt-3">
+                    En breve nos pondremos en contacto contigo por WhatsApp o Correo para integrarte al grupo de viaje correspondiente a tu zona.
+                </p>
+            </div>
+
+            <div class="p-4 bg-pastel-crema rounded-2xl border border-purple-100 text-xs text-pastel-textoSuave font-semibold">
+                📚 ¡Gracias por unirte a la travesía a la FIL Guadalajara 2026!
+            </div>
+
+            <button onclick="closeSuccessModal()" class="w-full py-3.5 bg-pastel-lilaDark hover:bg-purple-700 text-white font-extrabold rounded-2xl shadow-md transition-all">
+                Entendido / Aceptar
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LÓGICA DE INTERACCIÓN -->
+    <script>
+        // Modal de Registro
+        function openModal() {
+            document.getElementById('modalRegistro').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modalRegistro').classList.add('hidden');
+        }
+
+        // Manejo de envío del formulario Principal
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Evita la recarga por defecto de la página
+            showSuccessModal();
+            document.getElementById('mainForm').reset();
+        }
+
+        // Manejo de envío del formulario Modal
+        function handleModalSubmit(event) {
+            event.preventDefault();
+            closeModal();
+            showSuccessModal();
+        }
+
+        // Mostrar Ventana Emergente de Éxito
+        function showSuccessModal() {
+            document.getElementById('modalExito').classList.remove('hidden');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('modalExito').classList.add('hidden');
+        }
+
+        // Helper para actualizar municipios/alcaldías en el formulario si se requiere
+        function updateMunicipios() {
+            const estadoSelect = document.getElementById('estado');
+            const alcaldiaInput = document.getElementById('alcaldia');
+            
+            if (estadoSelect.value === 'CDMX') {
+                alcaldiaInput.placeholder = "Ej. Coyoacán, Cuauhtémoc, Tlalpan...";
+            } else if (estadoSelect.value === 'EdoMex') {
+                alcaldiaInput.placeholder = "Ej. Naucalpan, Toluca, Ecatepec...";
+            } else {
+                alcaldiaInput.placeholder = "Ej. Nombre de tu Municipio o Ciudad";
+            }
+        }
+
+        // Cierre de modal al dar click fuera del contenedor
+        window.onclick = function(event) {
+            const modalReg = document.getElementById('modalRegistro');
+            const modalExit = document.getElementById('modalExito');
+            if (event.target === modalReg) {
+                closeModal();
+            }
+            if (event.target === modalExit) {
+                closeSuccessModal();
+            }
+        }
+    </script>
+</body>
+</html>
